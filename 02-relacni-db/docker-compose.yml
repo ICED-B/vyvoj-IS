@@ -1,0 +1,68 @@
+# Konfigurace pro spuštění PostgreSQL databáze a pgAdmin nástroje
+# Určeno pro sekci výuky Relační databáze a SQL
+
+version: '3.8' # Verze syntaxe Docker Compose
+
+services:
+  # Služba pro PostgreSQL databázi
+  db:
+    image: postgres:15-alpine # Používáme stabilní verzi PostgreSQL na lehkém Alpine Linuxu
+    container_name: sql_db_service # Jméno kontejneru pro snazší identifikaci
+    restart: always # Automaticky restartovat kontejner, pokud spadne
+    environment:
+      # Nastavení přihlašovacích údajů a databáze
+      # POZNÁMKA: V reálném prostředí by hesla neměla být přímo v souboru, ale např. v .env souboru nebo Docker secrets
+      POSTGRES_USER: sql_user
+      POSTGRES_PASSWORD: sql_password # Zvolte bezpečnější heslo pro reálné použití
+      POSTGRES_DB: sql_knihovna_db # Název databáze pro příklad s knihovnou
+    ports:
+      # Mapování portu PostgreSQL na hostitelský systém
+      # Port 5433 na hostiteli se mapuje na výchozí port 5432 PostgreSQL v kontejneru
+      - "5433:5432"
+    volumes:
+      # Připojení pojmenovaného volume pro perzistentní uložení databáze
+      # Data zůstanou zachována i po odstranění kontejneru
+      - postgres_sql_data:/var/lib/postgresql/data
+    networks:
+      # Připojení kontejneru do definované sítě
+      - sql_section_net
+
+  # Služba pro pgAdmin 4
+  pgadmin:
+    image: dpage/pgadmin4:latest # Používáme oficiální image pgAdmin 4
+    container_name: sql_pgadmin_service # Jméno kontejneru
+    restart: always
+    environment:
+      # Nastavení výchozího uživatele pro přihlášení do pgAdmin webového rozhraní
+      PGADMIN_DEFAULT_EMAIL: student@example.com # Můžete změnit
+      PGADMIN_DEFAULT_PASSWORD: student_password # Zvolte bezpečnější heslo
+      PGADMIN_LISTEN_PORT: 80 # Port, na kterém pgAdmin naslouchá uvnitř kontejneru
+    ports:
+      # Mapování portu pgAdmin na hostitelský systém
+      # Port 5051 na hostiteli se mapuje na port 80 v kontejneru
+      - "5050:80"
+    volumes:
+      # Připojení pojmenovaného volume pro perzistentní uložení nastavení pgAdminu
+      # (např. definice připojení k serverům)
+      - pgadmin_sql_data:/var/lib/pgadmin
+    networks:
+      # Připojení kontejneru do definované sítě
+      - sql_section_net
+    depends_on:
+      # Spustit pgAdmin až poté, co je spuštěna databáze
+      - db
+
+# Definice sítí
+networks:
+  sql_section_net:
+    # Vytvoření vlastní sítě pro tuto sadu kontejnerů
+    driver: bridge # Výchozí typ sítě
+
+# Definice pojmenovaných volumes
+volumes:
+  postgres_sql_data:
+    # Volume pro data PostgreSQL
+    driver: local # Výchozí ovladač pro lokální volume
+  pgadmin_sql_data:
+    # Volume pro data pgAdminu
+    driver: local

@@ -1,0 +1,8 @@
+# Seznam Python závislostí pro backend aplikaci
+
+Flask>=2.0          # Webový microframework pro Python
+Flask-SQLAlchemy>=2.5 # Rozšíření pro Flask, které usnadňuje práci s SQLAlchemy
+psycopg2-binary     # Adaptér pro PostgreSQL databázi (binární verze pro snazší instalaci)
+Flask-CORS>=3.0     # Rozšíření pro Flask pro handling Cross-Origin Resource Sharing (CORS) - nutné pro komunikaci s frontendem na jiné doméně/portu
+python-dotenv>=0.19 # Pro načítání proměnných prostředí ze souboru .env (užitečné pro lokální vývoj)
+SQLAlchemy>=1.4     # SQL toolkit a Object Relational Mapper (ORM) - Flask-SQLAlchemy ho používá pod kapotou

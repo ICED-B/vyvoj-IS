@@ -1,0 +1,72 @@
+# Definice proměnných
+@baseUrl = http://localhost:5000/api
+@bookId = 2
+# ID knihy pro testování GET/PUT/DELETE (upravte podle potřeby)
+@contentType = application/json
+
+###
+# Získat všechny knihy
+# GET request na /books
+GET {{baseUrl}}/books
+Accept: application/json
+
+###
+# Přidat novou knihu
+# POST request na /books s JSON daty v těle
+POST {{baseUrl}}/books
+Content-Type: {{contentType}}
+Accept: application/json
+
+{
+"title": "Harry Potter a Kámen mudrců",
+"author": "J.K. Rowling",
+"publication_year": 1997,
+"isbn": "9788000012117"
+}
+
+###
+# Přidat další knihu (pro testování)
+POST {{baseUrl}}/books
+Content-Type: {{contentType}}
+Accept: application/json
+
+{
+"title": "Stopařův průvodce po Galaxii",
+"author": "Douglas Adams",
+"publication_year": 1979,
+"isbn": "9788025700500"
+}
+
+
+###
+# Získat knihu podle ID
+# GET request na /books/{id}
+# Používá proměnnou @bookId
+GET {{baseUrl}}/books/{{bookId}}
+Accept: application/json
+
+###
+# Aktualizovat knihu podle ID
+# PUT request na /books/{id} s JSON daty v těle
+# Používá proměnnou @bookId
+PUT {{baseUrl}}/books/{{bookId}}
+Content-Type: {{contentType}}
+Accept: application/json
+
+{
+"title": "Harry Potter a Kámen mudrců (Aktualizováno)",
+"author": "J. K. Rowlingová",
+"publication_year": 1998
+}
+
+###
+# Smazat knihu podle ID
+# DELETE request na /books/{id}
+# Používá proměnnou @bookId
+DELETE {{baseUrl}}/books/{{bookId}}
+Accept: application/json
+
+###
+# Zkusit získat smazanou knihu (mělo by vrátit 404)
+GET {{baseUrl}}/books/{{bookId}}
+Accept: application/json

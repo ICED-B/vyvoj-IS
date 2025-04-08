@@ -1,0 +1,13 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "server": "localhost",
+            "port": 5433,
+            "driver": "PostgreSQL",
+            "name": "postgres",
+            "database": "sql_knihovna_db",
+            "username": "sql_user"
+        }
+    ]
+}

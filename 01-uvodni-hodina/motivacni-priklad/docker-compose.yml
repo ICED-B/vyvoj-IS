@@ -1,0 +1,103 @@
+# Definuje služby pro aplikaci správy knihovny:
+# - db: PostgreSQL databáze
+# - backend: Python REST API (Flask/FastAPI)
+# - frontend: React aplikace
+
+version: '3.8' # Specifikuje verzi syntaxe Docker Compose
+
+services:
+  # Služba pro PostgreSQL databázi
+  db:
+    image: postgres:15-alpine # Použijeme oficiální PostgreSQL image (verze 15, Alpine linux)
+    container_name: knihovna_db # Pojmenování kontejneru pro snazší identifikaci
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+        # Perzistentní úložiště pro databázová data
+        # 'postgres_data' je pojmenovaný volume spravovaný Dockerem
+    ports:
+      - "5433:5432"
+        # Mapování portu: Port 5433 na hostiteli se mapuje na port 5432 v kontejneru
+        # Používáme 5433, abychom se vyhnuli konfliktu s případně běžící lokální instancí Postgres na 5432
+    environment:
+      # Proměnné prostředí pro konfiguraci PostgreSQL
+      POSTGRES_USER: knihovna_user # Uživatelské jméno pro databázi
+      POSTGRES_PASSWORD: knihovna_password # Heslo pro uživatele
+      POSTGRES_DB: knihovna_db # Název databáze, která se má vytvořit při startu
+    networks:
+      - knihovna_net # Připojení služby do definované sítě
+
+  # Služba pro Python backend (REST API)
+  backend:
+    container_name: knihovna_backend
+    build:
+      context: ./backend # Cesta k adresáři obsahujícímu Dockerfile pro backend
+      dockerfile: Dockerfile # Název Dockerfile (pokud je jiný než 'Dockerfile')
+    ports:
+      - "5000:5000" # Mapování portu: Port 5000 na hostiteli se mapuje na port 5000 v kontejneru (běžný port pro Flask/FastAPI)
+    volumes:
+      - ./backend:/app
+        # Mapování lokálního adresáře 'backend' do adresáře '/app' v kontejneru
+        # Umožňuje live-reload změn v kódu bez nutnosti rebuild image (pro vývoj)
+    environment:
+      # Proměnné prostředí pro backend aplikaci
+      DATABASE_URL: postgresql://knihovna_user:knihovna_password@db:5432/knihovna_db
+        # Připojovací řetězec k databázi
+        # 'db' je název služby databáze v rámci Docker sítě
+      FLASK_ENV: development # Nastavení prostředí pro Flask (např. pro debug mód) - upravte dle použitého frameworku
+      FLASK_APP: app:create_app # Říká Flasku, kde najít funkci pro vytvoření aplikace (v modulu 'app', funkce 'create_app')
+      # Případně další proměnné (např. SECRET_KEY)
+    depends_on:
+      - db # Backend služba závisí na službě 'db' - spustí se až po ní
+    networks:
+      - knihovna_net
+
+  # Služba pro React frontend
+  frontend:
+    container_name: knihovna_frontend
+    build:
+      context: ./frontend # Cesta k adresáři obsahujícímu Dockerfile pro frontend
+      dockerfile: Dockerfile
+    ports:
+      - "3000:3000"
+        # Mapování portu: Port 3000 na hostiteli se mapuje na port 3000 v kontejneru (běžný port pro React dev server)
+        # Pro produkční build by se typicky používal port 80 a Nginx/jiný web server
+    volumes:
+      - ./frontend/src:/app/src # Mapování zdrojových kódů Reactu pro live-reload (pro vývoj)
+      - ./frontend/public:/app/public
+    environment:
+      # Proměnné prostředí pro frontend (pokud jsou potřeba)
+      REACT_APP_API_URL: http://localhost:5000/api
+        # URL adresa backend API, ke které se bude frontend připojovat
+        # Používáme localhost a port backendu mapovaný na hostitele
+    depends_on:
+      - backend # Frontend může záviset na backendu (i když komunikace probíhá přes HTTP)
+    networks:
+      - knihovna_net
+
+  # Služba pro pgAdmin - webový nástroj pro správu PostgreSQL
+  pgadmin:
+    image: dpage/pgadmin4:latest # Použijeme oficiální pgAdmin4 image
+    container_name: knihovna_pgadmin
+    environment:
+      PGADMIN_DEFAULT_EMAIL: admin@example.com # Výchozí email pro přihlášení
+      PGADMIN_DEFAULT_PASSWORD: admin # Výchozí heslo pro přihlášení
+      PGADMIN_LISTEN_PORT: 80 # Port, na kterém pgAdmin naslouchá uvnitř kontejneru
+    ports:
+      - "5050:80" # Mapování portu: Port 5050 na hostiteli se mapuje na port 80 v kontejneru
+    volumes:
+      - pgadmin_data:/var/lib/pgadmin # Perzistentní úložiště pro data pgAdminu (nastavení serverů atd.)
+    networks:
+      - knihovna_net
+    depends_on:
+      - db # pgAdmin závisí na databázi
+
+# Definice sítí
+networks:
+  knihovna_net:
+    # Vytvoření vlastní bridge sítě pro komunikaci mezi kontejnery
+    driver: bridge
+
+# Definice pojmenovaných volumes
+volumes:
+  postgres_data: # Volume pro perzistentní ukládání dat PostgreSQL databáze
+  pgadmin_data: # Volume pro perzistentní ukládání dat pgAdminu
