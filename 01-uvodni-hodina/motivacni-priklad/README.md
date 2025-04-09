@@ -61,7 +61,9 @@ motivacni-priklad/
 ```
 
 ## Spuštění aplikace
+
 1. **Nainstalujte Docker a Docker Compose:** Ujistěte se, že máte na svém systému nainstalované tyto nástroje.
+
 2. **Naklonujte repozitář:** (Pokud bude projekt v Gitu)
     ```bash
     git clone <URL_repozitare>
@@ -73,15 +75,19 @@ motivacni-priklad/
     ```
 *   `--build`: Vynutí sestavení Docker images (potřebné při první spuštění nebo po změnách v Dockerfile).
 *   `-d`: Spustí kontejnery na pozadí (detached mode).
+
 4. **Přístup k aplikaci:** 
-*   Frontend bude dostupný v prohlížeči na adrese: `http://localhost:3000` 
-*   Backend API bude dostupné na adrese: http://localhost:5000 (např. `http://localhost:5000/api/books` pro seznam knih)
+*   Frontend bude dostupný v prohlížeči na adrese: [http://localhost:3000](http://localhost:3000) 
+*   Backend API bude dostupné na adrese: [http://localhost:5000](http://localhost:5000) (např. [http://localhost:5000/api/books](http://localhost:5000/api/books) pro seznam knih)
 *   K databázi se lze připojit nástrojem jako DBeaver nebo pgAdmin na `localhost:5050` s přihlašovacími údaji definovanými v `docker-compose.yml`.
+
 5. **Dotazování na backend:** 
-*   V souboru `API-requests.http` jsou připraveny ukázkové dotazy na bakend, které si můžete vyzkoušet.
-*   Pro jejich použití budete potřebovat rozšíření pro VSCode `humao.rest-client`.
+*   V souboru [API-requests.http](./API-requests.http) jsou připraveny ukázkové dotazy na bakend, které si můžete vyzkoušet.
+*   Pro jejich použití budete potřebovat rozšíření pro VSCode [humao.rest-client](https://marketplace.visualstudio.com/items/?itemName=humao.rest-client).
+
 ## Zastavení aplikace
 Pro zastavení a odstranění kontejnerů, sítí a volumes (kromě pojmenovaného `postgres_data`) použijte příkaz:
+
 ```bash
 docker-compose down
 ```
