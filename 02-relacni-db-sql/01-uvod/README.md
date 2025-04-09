@@ -60,7 +60,7 @@ V tomto kurzu budeme PostgreSQL používat jako platformu pro všechny naše pra
 
 Jak je uvedeno v sekci "Nastavení prostředí", budeme používat PostgreSQL běžící v Docker kontejneru. Pro připojení k této databázi můžeme použít:
 
-* **pgAdmin:** Webový nástroj běžící v samostatném Docker kontejneru (dostupný na `http://localhost:5051`). Po přihlášení do pgAdminu je třeba nakonfigurovat připojení k databázovému serveru `db` (název služby v Dockeru) na portu `5432` s použitím přihlašovacích údajů definovaných v `docker-compose.yml`.
+* **pgAdmin:** Webový nástroj běžící v samostatném Docker kontejneru (dostupný na [http://localhost:5050](http://localhost:5050). Po přihlášení do pgAdminu je třeba nakonfigurovat připojení k databázovému serveru `db` (název služby v Dockeru) na portu `5432` s použitím přihlašovacích údajů definovaných v `docker-compose.yml`.
 * **Jiní SQL klienti (DBeaver, SQLTools ve VS Code, psql):** Tyto nástroje se připojují přímo na port mapovaný na vašem hostitelském počítači (typicky `localhost:5433`) s použitím stejných přihlašovacích údajů.
 
 V následujících částech začneme používat jazyk SQL pro práci s naší databází knihovny v PostgreSQL.

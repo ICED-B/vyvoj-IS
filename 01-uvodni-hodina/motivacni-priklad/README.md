@@ -91,7 +91,9 @@ Pro zastavení a odstranění kontejnerů, sítí a volumes (kromě pojmenované
 ```bash
 docker-compose down
 ```
+
 Pro zastavení bez odstranění:
+
 ```bash
 docker-compose stop
 ```

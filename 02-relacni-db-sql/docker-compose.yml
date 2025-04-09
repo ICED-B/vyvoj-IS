@@ -39,7 +39,7 @@ services:
       PGADMIN_LISTEN_PORT: 80 # Port, na kterém pgAdmin naslouchá uvnitř kontejneru
     ports:
       # Mapování portu pgAdmin na hostitelský systém
-      # Port 5051 na hostiteli se mapuje na port 80 v kontejneru
+      # Port 5050 na hostiteli se mapuje na port 80 v kontejneru
       - "5050:80"
     volumes:
       # Připojení pojmenovaného volume pro perzistentní uložení nastavení pgAdminu

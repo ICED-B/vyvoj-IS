@@ -66,8 +66,8 @@ Pro praktické ukázky budeme využívat **PostgreSQL a pgAdmin běžící v Doc
 1.  [Úvod do relačního modelu a PostgreSQL](./01-uvod/README.md).
 2.  [Jazyk SQL: Definice dat (DDL)](./02-SQL-DDL/README.md) - `CREATE TABLE`, datové typy, omezení.
 3.  [Jazyk SQL: Manipulace s daty (DML)](./03-SQL-DML/README.md) - `INSERT`, `UPDATE`, `DELETE`.
-4.  Jazyk SQL: Dotazování (DQL) - `SELECT`, `WHERE`, `ORDER BY`.
-5.  Jazyk SQL: Spojování tabulek (`JOIN`).
+4.  [Jazyk SQL: Dotazování (DQL)](./04-SQL-DQL/README.md) - `SELECT`, `WHERE`, `ORDER BY`.
+5.  [Jazyk SQL: Spojování tabulek](./05-SQL-JOIN/README.md) (`JOIN`).
 6.  Jazyk SQL: Agregace (`GROUP BY`, `HAVING`, agregační funkce).
 7.  Jazyk SQL: Poddotazy.
 8.  Transakce, Indexy, Pohledy.

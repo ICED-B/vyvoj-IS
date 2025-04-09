@@ -162,12 +162,6 @@ CREATE TABLE publishers (
     headquarters TEXT -- Sídlo (může být delší text)
 );
 
--- Tabulka pro žánry
-CREATE TABLE genres (
-    genre_id SERIAL PRIMARY KEY,
-    name VARCHAR(50) NOT NULL UNIQUE -- Název žánru musí být unikátní
-);
-
 -- Tabulka pro autory
 CREATE TABLE authors (
     author_id SERIAL PRIMARY KEY,
@@ -184,17 +178,14 @@ CREATE TABLE books (
     title VARCHAR(255) NOT NULL,
     publication_year INTEGER CHECK (publication_year > 0),
     isbn VARCHAR(13) UNIQUE, -- ISBN by mělo být unikátní, pokud je zadáno
+    page_count INTEGER CHECK (page_count > 0), -- Počet stran (musí být kladný)
+    price NUMERIC(8, 2) CHECK (price >= 0), -- Cena (max 999999.99, nesmí být záporná)
     publisher_id INTEGER, -- Cizí klíč na vydavatele
-    genre_id INTEGER, -- Cizí klíč na žánr
 
-    -- Definice cizích klíčů
+    -- Definice cizího klíče
     FOREIGN KEY (publisher_id) REFERENCES publishers(publisher_id)
         ON DELETE SET NULL -- Pokud smažeme vydavatele, u knihy se publisher_id nastaví na NULL
-        ON UPDATE CASCADE, -- Pokud se změní publisher_id, změní se i zde
-
-    FOREIGN KEY (genre_id) REFERENCES genres(genre_id)
-        ON DELETE RESTRICT -- Nedovolíme smazat žánr, pokud k němu existují knihy
-        ON UPDATE CASCADE
+        ON UPDATE CASCADE -- Pokud se změní publisher_id, změní se i zde
 );
 
 -- Asociační tabulka pro vztah M:N mezi knihami a autory
@@ -225,3 +216,40 @@ Tyto `CREATE TABLE` příkazy můžete spustit:
 * V terminálu pomocí `psql`: Připojte se k databázi a vložte příkazy.
 
 Po úspěšném spuštění těchto příkazů bude ve vaší databázi `sql_knihovna_db` vytvořena struktura tabulek připravená pro vkládání dat (což je téma pro DML).
+
+---
+
+### Cvičení (Samostatná práce)
+
+Následující úkoly vám pomohou procvičit si tvorbu tabulek a definování omezení. Předpokládejte, že pracujete v databázi `sql_knihovna_db`, kde již existují tabulky z příkladu výše.
+
+1.  **Vytvořte tabulku `libraries` (knihovny/pobočky).**
+    * Sloupce:
+        * `library_id` (primární klíč, automaticky generované celé číslo)
+        * `name` (textový řetězec, max 100 znaků, povinný, unikátní)
+        * `city` (textový řetězec, max 50 znaků, povinný)
+        * `opening_date` (datum otevření, nepovinný)
+    * _Nápověda: Použijte `SERIAL PRIMARY KEY`, `VARCHAR`, `DATE`, `NOT NULL`, `UNIQUE`._
+
+2.  **Vytvořte tabulku `book_copies` (výtisky knih).**
+    * Sloupce:
+        * `copy_id` (primární klíč, automaticky generované velké celé číslo - `BIGSERIAL`)
+        * `book_id` (cizí klíč odkazující na `books.book_id`, povinný)
+        * `library_id` (cizí klíč odkazující na `libraries.library_id` z úkolu 1, povinný)
+        * `condition` (textový řetězec, max 10 znaků, povolené hodnoty jsou pouze 'new', 'good', 'fair', 'poor', výchozí hodnota 'good')
+        * `acquired_date` (datum pořízení, výchozí hodnota je aktuální datum)
+    * Nastavte akci `ON DELETE CASCADE` pro `book_id` (pokud se smaže kniha, smažou se i její výtisky).
+    * Nastavte akci `ON DELETE RESTRICT` pro `library_id` (nesmí být možné smazat knihovnu, pokud v ní jsou evidované výtisky).
+    * _Nápověda: Použijte `BIGSERIAL`, `INTEGER`, `VARCHAR`, `DATE`, `FOREIGN KEY ... REFERENCES ...`, `ON DELETE ...`, `CHECK (condition IN (...))`, `DEFAULT CURRENT_DATE`._
+
+3.  **Vytvořte tabulku `patrons` (čtenáři).**
+    * Sloupce:
+        * `patron_id` (primární klíč, `SERIAL`)
+        * `first_name` (text, povinný)
+        * `last_name` (text, povinný)
+        * `email` (text, unikátní, nepovinný)
+        * `registration_date` (datum, povinné, výchozí aktuální datum)
+        * `membership_fee_paid` (logická hodnota, povinné, výchozí `FALSE`)
+    * _Nápověda: Použijte `SERIAL`, `TEXT`, `VARCHAR` nebo `TEXT` pro email, `DATE`, `BOOLEAN`, `NOT NULL`, `UNIQUE`, `DEFAULT`._
+
+*(Správnost syntaxe si ověřte spuštěním příkazů v pgAdminu nebo jiném SQL klientovi.)*
