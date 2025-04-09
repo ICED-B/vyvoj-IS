@@ -22,9 +22,9 @@ Po absolvování kurzu byste měli být schopni navrhnout, vyvinout a spravovat 
 Pro úspěšné zvládnutí praktických částí předmětu je nezbytná základní orientace v následujících nástrojích. Pokud si nejste jisti, využijte prosím připravené materiály pro samostudium:
 
 * **Git:** Základy verzování, práce s lokálním a vzdáleným repozitářem, větvení a slučování.
-    * Materiály: `../00-predpoklady/git/README.md`
+    * Materiály pro osvěžení znalostí [zde](../00-predpoklady/git/README.md).
 * **Docker:** Principy kontejnerizace, práce s Docker image a kontejnery, základy Docker Compose pro správu vícekontejnerových aplikací.
-    * Materiály: `../00-predpoklady/docker/README.md`
+    * Materiály pro osvěžení znalostí [zde](../00-predpoklady/docker/README.md).
 
 Důrazně doporučujeme si tyto technologie osvěžit nebo doučit ještě před začátkem výuky témat, kde budou aktivně využívány (zejména při práci s databázemi a webovými aplikacemi).
 
@@ -73,7 +73,7 @@ Aktuální plán výuky je dostupný online v [této tabulce](https://docs.googl
 
 ## 6. Motivace a Nástroje
 
-* **Motivační příklad:** V průběhu kurzu si jako motivační příklad postupně ukážeme vývoj jednoduchého informačního systému. Bude se jednat o aplikaci s REST API backendem v Pythonu (např. pomocí frameworku Flask nebo FastAPI), frontendem vytvořeným v Reactu a databází PostgreSQL. Celá aplikace bude snadno spustitelná pomocí Dockeru. Tento příklad nám pomůže propojit všechny klíčové technologie (databáze, backend, frontend, kontejnerizace) do funkčního celku. [Odkaz na repozitář s příkladem bude doplněn].
+* **Motivační příklad:** Jako motivační příklad si ukážeme jednoduchý informačního systém. Jedná se o aplikaci s REST API backendem v Pythonu, frontendem vytvořeným v Reactu a databází PostgreSQL. Celá aplikace spustitelná pomocí Dockeru. Tento příklad demonstruje použití všech klíčových technologii (databáze, backend, frontend, kontejnerizace) do funkčního celku. K nalezení [zde](./motivacni-priklad/README.md).
 * **Primární nástroje:**
     * **PostgreSQL:** Výkonný open-source relační databázový systém.
     * **Python (s frameworkem Flask nebo FastAPI):** Pro vývoj backendu a REST API.

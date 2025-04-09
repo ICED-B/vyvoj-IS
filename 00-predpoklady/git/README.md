@@ -195,8 +195,8 @@ Pokud tento krok přeskočíte, Git použije výchozí systémový editor (což 
 
 V adresáři `priklady` naleznete několik jednoduchých příkladů, které ilustrují základní použití Gitu.
 
-*   **`01-zaklady`:**  Inicializace repozitáře, přidání souborů, commit, prohlížení historie.
-*   **`02-vetveni`:**  Vytvoření větve, přepínání mezi větvemi, sloučení.
-*   **`03-vzdaleny-repozitar`:** Klonování, push, pull (tento příklad bude vyžadovat účet na GitHubu nebo podobné službě).
+*   **[01-zaklady](./priklady/01-zaklady/):**  Inicializace repozitáře, přidání souborů, commit, prohlížení historie.
+*   **[02-vetveni](./priklady/02-vetveni/README.md):**  Vytvoření větve, přepínání mezi větvemi, sloučení.
+*   **[03-vzdaleny-repozitar](./priklady/03-vzdaleny-repozitar/README.md):** Klonování, push, pull (tento příklad bude vyžadovat účet na GitHubu nebo podobné službě).
 
 Projděte si tyto příklady a vyzkoušejte si je.

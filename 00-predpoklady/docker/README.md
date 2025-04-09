@@ -88,8 +88,8 @@ Zde jsou některé základní příkazy Dockeru, které budete často používat
 
 V adresáři `priklady` naleznete několik jednoduchých příkladů, které ilustrují základní použití Dockeru:
 
-1.  **`01-hello-world`:** Nejjednodušší možný příklad – spuštění oficiálního "hello-world" image z Docker Hubu.
-2.  **`02-vlastni-image`:** Vytvoření vlastního image pomocí Dockerfile.
-3.  **`03-docker-compose`:** Spuštění jednoduché aplikace s více kontejnery pomocí Docker Compose.
+*  **[01-hello-world](./priklady/01-hello-world/README.md):** Nejjednodušší možný příklad – spuštění oficiálního "hello-world" image z Docker Hubu.
+*  **[02-vlastni-image](./priklady/02-vlastni-image/README.md):** Vytvoření vlastního image pomocí Dockerfile.
+*  **[03-docker-compose](./priklady/03-docker-compose/README.md):** Spuštění jednoduché aplikace s více kontejnery pomocí Docker Compose.
 
 Projděte si tyto příklady a vyzkoušejte si je.  Každý příklad má vlastní `README.md` soubor s podrobnými instrukcemi.
