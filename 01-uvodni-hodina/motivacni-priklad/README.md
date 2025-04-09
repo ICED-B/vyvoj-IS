@@ -66,7 +66,7 @@ motivacni-priklad/
 
 2. **Naklonujte repozitář:** (Pokud bude projekt v Gitu)
     ```bash
-    git clone <URL_repozitare>
+    git clone https://github.com/TomasRacil/vyvoj-IS.git
     cd 01-uvodni-hodina/motivacni-priklad-knihovna
     ```
 3. **Spusťte kontejnery:** V kořenovém adresáři projektu (kde se nachází `docker-compose.yml`) spusťte příkaz:
@@ -79,7 +79,7 @@ motivacni-priklad/
 4. **Přístup k aplikaci:** 
 *   Frontend bude dostupný v prohlížeči na adrese: [http://localhost:3000](http://localhost:3000) 
 *   Backend API bude dostupné na adrese: [http://localhost:5000](http://localhost:5000) (např. [http://localhost:5000/api/books](http://localhost:5000/api/books) pro seznam knih)
-*   K databázi se lze připojit nástrojem jako DBeaver nebo pgAdmin na `localhost:5050` s přihlašovacími údaji definovanými v `docker-compose.yml`.
+*   K databázi se lze připojit nástrojem jako DBeaver nebo pgAdmin na [localhost:5050](http://localhost:5050) s přihlašovacími údaji definovanými v `docker-compose.yml` nebo nap59klad p5es doplněk do VSCode [SQLTools](https://marketplace.visualstudio.com/items/?itemName=mtxr.sqltools).
 
 5. **Dotazování na backend:** 
 *   V souboru [API-requests.http](./API-requests.http) jsou připraveny ukázkové dotazy na bakend, které si můžete vyzkoušet.

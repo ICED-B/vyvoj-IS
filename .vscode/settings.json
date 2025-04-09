@@ -5,9 +5,9 @@
             "server": "localhost",
             "port": 5433,
             "driver": "PostgreSQL",
-            "name": "postgres",
-            "database": "sql_knihovna_db",
-            "username": "sql_user"
+            "name": "sprava_knihovny",
+            "database": "knihovna_db",
+            "username": "knihovna_user"
         }
     ]
 }

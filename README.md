@@ -23,16 +23,16 @@ Dále se předpokládá základní algoritmické myšlení a znalost základů p
 
 Materiály jsou organizovány do číslovaných adresářů podle témat probíraných na přednáškách a cvičeních:
 
-* `00-predpoklady/`: Materiály a příklady k Gitu a Dockeru.
-* `01-uvodni-hodina/`: Úvodní informace k předmětu, cíle, hodnocení, harmonogram. **Začněte zde!**
-* `02-relacni-db-sql/`: Materiály k relačnímu modelu, databázím PostgreSQL a jazyku SQL (DDL, DML, DQL...).
+* [`00-predpoklady/`](./00-predpoklady/): Materiály a příklady k Gitu a Dockeru.
+* [`01-uvodni-hodina/`](./01-uvodni-hodina/README.md): Úvodní informace k předmětu, cíle, hodnocení, harmonogram. **Začněte zde!**
+* [`02-relacni-db-sql/`](./02-relacni-db-sql/README.md): Materiály k relačnímu modelu, databázím PostgreSQL a jazyku SQL (DDL, DML, DQL...).
     * Obsahuje vlastní `docker-compose.yml` pro spuštění PostgreSQL a pgAdminu pro tuto sekci.
 * `03-vyvoj-web-client/`: Materiály k vývoji klientské části webových aplikací (HTML, CSS, JS, React...).
 * `04-vyvoj-web-server/`: Materiály k vývoji serverové části webových aplikací (Python, Flask/FastAPI, MVC, REST API...).
 * `05-vyvoj-db-server/`: Materiály k uloženým procedurám, triggerům v PostgreSQL.
 * `06-sprava-db/`: Materiály k administraci databází.
 * `07-nosql-newsql/`: Materiály k NoSQL a NewSQL databázím.
-* `motivacni-priklad-knihovna/`: Kompletní kód motivačního příkladu (Python backend, React frontend, PostgreSQL, Docker).
+<!-- * `motivacni-priklad-knihovna/`: Kompletní kód motivačního příkladu (Python backend, React frontend, PostgreSQL, Docker). -->
 
 *(Struktura se může v průběhu semestru mírně upravovat)*
 
