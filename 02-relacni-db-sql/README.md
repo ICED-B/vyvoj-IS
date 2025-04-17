@@ -68,9 +68,9 @@ Pro praktické ukázky budeme využívat **PostgreSQL a pgAdmin běžící v Doc
 3.  [Jazyk SQL: Manipulace s daty (DML)](./03-SQL-DML/README.md) - `INSERT`, `UPDATE`, `DELETE`.
 4.  [Jazyk SQL: Dotazování (DQL)](./04-SQL-DQL/README.md) - `SELECT`, `WHERE`, `ORDER BY`.
 5.  [Jazyk SQL: Spojování tabulek](./05-SQL-JOIN/README.md) (`JOIN`).
-6.  Jazyk SQL: Agregace (`GROUP BY`, `HAVING`, agregační funkce).
-7.  Jazyk SQL: Poddotazy.
-8.  Transakce, Indexy, Pohledy.
+6.  [Jazyk SQL: Agregace](./06-SQL-Agregace/README.md) (`GROUP BY`, `HAVING`, agregační funkce).
+7.  [Jazyk SQL: Poddotazy](./07-SQL-Poddotazy/README.md).
+8.  [Transakce, Indexy, Pohledy](./08-SQL-Transakce/README.md).
 
 ## 7. Předpoklady
 

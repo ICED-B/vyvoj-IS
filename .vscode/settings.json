@@ -6,8 +6,8 @@
             "port": 5433,
             "driver": "PostgreSQL",
             "name": "sprava_knihovny",
-            "database": "knihovna_db",
-            "username": "knihovna_user"
+            "database": "sql_knihovna_db",
+            "username": "sql_user"
         }
     ]
 }
