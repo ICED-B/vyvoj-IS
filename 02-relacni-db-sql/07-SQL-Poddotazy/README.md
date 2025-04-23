@@ -167,8 +167,8 @@ Poddotazy jsou mocným nástrojem SQL, který umožňuje vytvářet složitějš
 
 Následující úkoly vám pomohou procvičit si použití poddotazů. Použijte databázi `sql_knihovna_db` naplněnou daty ze skriptu `data.sql`.
 
-1.  **Najděte všechny knihy, které byly vydány ve stejném roce jako kniha 'Duna'.** Vypište jejich názvy a rok vydání. (Nezahrnujte samotnou Dunu do výsledku).
-    * _Nápověda: Použijte skalární poddotaz ve `WHERE` k zjištění roku vydání Duny. `WHERE publication_year = (SELECT ...)` a přidejte podmínku `AND title != 'Duna'`._
+1.  **Najděte všechny knihy, které byly vydány ve stejném roce jako kniha 'Mort'.** Vypište jejich názvy a rok vydání. (Nezahrnujte samotn0ho Morta do výsledku).
+    * _Nápověda: Použijte skalární poddotaz ve `WHERE` k zjištění roku vydání Morta. `WHERE publication_year = (SELECT ...)` a přidejte podmínku `AND title != 'Mort'`._
 2.  **Najděte jména všech autorů, kteří napsali alespoň jednu knihu vydanou nakladatelstvím "Argo" (ID 1).** Použijte operátor `IN` nebo `EXISTS`.
     * _Nápověda (IN): `SELECT ... FROM authors WHERE author_id IN (SELECT author_id FROM book_authors WHERE book_id IN (SELECT book_id FROM books WHERE publisher_id = 1))`_
     * _Nápověda (EXISTS): `SELECT ... FROM authors a WHERE EXISTS (SELECT 1 FROM book_authors ba JOIN books b ON ba.book_id = b.book_id WHERE ba.author_id = a.author_id AND b.publisher_id = 1)`_
