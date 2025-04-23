@@ -28,7 +28,6 @@ VALUES ('Argo', 'Praha'),
     -- ID: 6
     ('Mladá fronta', 'Praha');
 -- ID: 7
--- Vložení žánrů - ODSTRANĚNO
 -- Vložení autorů
 INSERT INTO authors (first_name, last_name, birth_year)
 VALUES ('Jo', 'Nesbø', 1960),
@@ -55,10 +54,11 @@ VALUES ('Jo', 'Nesbø', 1960),
     -- ID: 11
     ('Stieg', 'Larsson', 1954),
     -- ID: 12
-    ('Isaac', 'Asimov', 1920);
--- ID: 13
--- Vložení knih (AKTUALIZOVÁNO - přidán page_count, price; odstraněn genre_id)
--- Používáme ID vydavatelů 1-7 a autorů 1-13
+    ('Isaac', 'Asimov', 1920),
+    -- ID: 13
+    ('Karel', 'Čapek', 1890);
+-- ID: 14
+-- Používáme ID vydavatelů 1-7 a autorů 1-14
 INSERT INTO books (
         title,
         publication_year,
@@ -223,8 +223,6 @@ VALUES -- Původní knihy
         4
     );
 -- ID: 21, Euromedia
--- Vložení vazeb mezi knihami a autory (M:N)
--- Používáme ID z předchozích vložení
 INSERT INTO book_authors (book_id, author_id)
 VALUES -- Původní vazby
     (1, 1),
@@ -271,5 +269,4 @@ VALUES -- Původní vazby
     -- Čaroprávnost - Terry Pratchett
     (21, 4);
 -- Vražda v Orient-expresu - Agatha Christie
--- Kontrola (nepovinné)
 SELECT 'Data byla úspěšně vložena/aktualizována.' AS status;
