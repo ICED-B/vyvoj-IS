@@ -84,7 +84,7 @@ Backend bude typicky dostupný na `http://localhost:5000` a jeho API dokumentace
 ## 6. Struktura této části
 
 1.  [Úvod do HTTP, REST API a webových frameworků (Flask jako příklad)](./01-HTTP-REST-Frameworky/README.md).
-2.  Základní Flask aplikace, routování, request/response.
+2.  [Základní Flask aplikace, routování, request/response](./02-Flask-Basics/README.md).
 3.  Nastavení Flask-SQLAlchemy, definice databázových modelů.
 4.  Databázové migrace s Flask-Migrate.
 5.  Úvod do Flask-Smorest, Marshmallow schémata, Blueprints.
