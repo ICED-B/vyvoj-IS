@@ -1,0 +1,15 @@
+# Jednoduchý docker-compose pro spuštění ukázkové Flask aplikace
+
+services:
+  flask_demo_app:
+    build: . # Sestaví image z Dockerfile v aktuálním adresáři
+    container_name: flask_http_demo
+    ports:
+      # Mapování portu 5000 z kontejneru na port 5000 na hostiteli
+      - "5000:5000"
+    volumes:
+      # Mapování aktuálního adresáře do /app v kontejneru pro live-reload
+      - .:/app
+    # Můžeme přidat environment proměnné, pokud by je app.py potřebovalo
+    # environment:
+    #   - FLASK_DEBUG=1

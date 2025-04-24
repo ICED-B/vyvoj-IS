@@ -1,0 +1,2 @@
+Flask>=3.0.0
+Werkzeug>=3.0.0 # Závislost Flasku, explicitní uvedení může pomoci s kompatibilitou

@@ -1,0 +1,81 @@
+# Požadavky pro testování ukázkové Flask HTTP/REST aplikace
+# Použijte s rozšířením REST Client (humao.rest-client) ve VS Code
+
+# --- Proměnné ---
+@baseUrl = http://localhost:5000
+@contentType = application/json
+
+###
+# GET - Získat všechny položky
+GET {{baseUrl}}/items
+Accept: {{contentType}}
+
+###
+# GET - Získat položku s ID 1
+GET {{baseUrl}}/items/1
+Accept: {{contentType}}
+
+###
+# GET - Získat neexistující položku (očekáváme 404)
+GET {{baseUrl}}/items/999
+Accept: {{contentType}}
+
+###
+# POST - Vytvořit novou položku
+POST {{baseUrl}}/items
+Content-Type: {{contentType}}
+Accept: {{contentType}}
+
+{
+    "name": "Nová položka",
+    "description": "Toto je testovací popis."
+}
+
+###
+# POST - Pokus o vytvoření bez povinného pole 'name' (očekáváme 400)
+POST {{baseUrl}}/items
+Content-Type: {{contentType}}
+Accept: {{contentType}}
+
+{
+    "description": "Chybí jméno."
+}
+
+
+###
+# PUT - Aktualizovat položku s ID 2
+# Nahradí celý záznam (kromě ID)
+PUT {{baseUrl}}/items/2
+Content-Type: {{contentType}}
+Accept: {{contentType}}
+
+{
+    "name": "Aktualizovaná Položka 2",
+    "description": "Nový popis pro položku 2."
+}
+
+###
+# PUT - Pokus o aktualizaci neexistující položky (očekáváme 404)
+PUT {{baseUrl}}/items/999
+Content-Type: {{contentType}}
+Accept: {{contentType}}
+
+{
+    "name": "Neexistující",
+    "description": "Tohle by nemělo projít."
+}
+
+###
+# DELETE - Smazat položku s ID 1
+DELETE {{baseUrl}}/items/1
+Accept: {{contentType}}
+
+###
+# DELETE - Pokus o smazání neexistující položky (očekáváme 404)
+DELETE {{baseUrl}}/items/999
+Accept: {{contentType}}
+
+###
+# GET - Znovu získat všechny položky (ověření smazání)
+GET {{baseUrl}}/items
+Accept: {{contentType}}
