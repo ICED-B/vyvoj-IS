@@ -14,6 +14,12 @@ next_id = 3
 # --- Definice RESTful endpointů ---
 
 
+@app.route("/", methods=["GET"])
+def get_hello():
+    nase_dictionary = {"test": "test"}
+    return nase_dictionary, 200
+
+
 # GET /items - Získání seznamu všech položek
 @app.route("/items", methods=["GET"])
 def get_items():
@@ -80,6 +86,23 @@ def update_item(item_id):
         "description", item.get("description", "")
     )  # Zachováme popis, pokud není v requestu
     app.logger.info(f"PUT /items/{item_id} successful")
+    return jsonify(item), 200
+
+
+# PATCH /items/<int:item_id> - Aktualizace existující položky
+@app.route("/items/<int:item_id>", methods=["PATCH"])
+def patch_item(item_id):
+    """Aktualizuje existující položku."""
+    item = next((item for item in items if item["id"] == item_id), None)
+    if not item:
+        app.logger.warning(f"PATCH /items/{item_id} failed: Item not found")
+    if not request.json:
+        app.logger.error(f"PATCH /items/{item_id} failed: Missing JSON payload")
+        abort(400, description="Požadavek musí obsahovat JSON.")
+
+    item["name"] = request.json.get("name", item["name"])
+    item["description"] = request.json.get("description", item["description"])
+    app.logger.info(f"PATCH /items/{item_id} successful")
     return jsonify(item), 200
 
 

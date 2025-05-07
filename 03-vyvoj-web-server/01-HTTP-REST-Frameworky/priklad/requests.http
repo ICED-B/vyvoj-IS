@@ -12,7 +12,7 @@ Accept: {{contentType}}
 
 ###
 # GET - Získat položku s ID 1
-GET {{baseUrl}}/items/1
+GET {{baseUrl}}/items/2
 Accept: {{contentType}}
 
 ###
@@ -38,7 +38,7 @@ Content-Type: {{contentType}}
 Accept: {{contentType}}
 
 {
-    "description": "Chybí jméno."
+    "name": "TEST 2"
 }
 
 
@@ -52,6 +52,28 @@ Accept: {{contentType}}
 {
     "name": "Aktualizovaná Položka 2",
     "description": "Nový popis pro položku 2."
+}
+
+###
+# PATCH - Aktualizovat položku s ID 2
+# Nahradí konkretni vlastnost (kromě ID)
+PATCH {{baseUrl}}/items/2
+Content-Type: {{contentType}}
+Accept: {{contentType}}
+
+{
+    "name": "Aktualizovaná Položka 2.2"
+}
+
+###
+# PATCH - Aktualizovat položku s ID 2
+# Nahradí konkretni vlastnost (kromě ID)
+PATCH {{baseUrl}}/items/2
+Content-Type: {{contentType}}
+Accept: {{contentType}}
+
+{
+    "description": "Aktualizovaná Položka 2.2"
 }
 
 ###

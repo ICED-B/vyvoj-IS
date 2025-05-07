@@ -12,7 +12,7 @@ DATABASE_URL = f"sqlite:///{DATABASE_FILE}"
 
 # Vytvoření "engine", což je vstupní bod pro komunikaci s databází
 # echo=True způsobí vypisování generovaných SQL příkazů do konzole (užitečné pro ladění)
-engine = create_engine(DATABASE_URL, echo=False)  # Nastavte echo=True pro zobrazení SQL
+engine = create_engine(DATABASE_URL, echo=True)  # Nastavte echo=True pro zobrazení SQL
 
 # --- 2. Definice základní třídy pro modely (Declarative Base) ---
 # Všechny naše modely budou dědit z této základní třídy

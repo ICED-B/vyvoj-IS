@@ -87,17 +87,15 @@ Backend bude typicky dostupný na `http://localhost:5000` a jeho API dokumentace
 2.  [Základní Flask aplikace, routování, request/response](./02-Flask-Basics/README.md).
 3.  [Nastavení Flask-SQLAlchemy, definice databázových modelů](./03-FlaskSQLAlchemy/README.md).
 4.  [Databázové migrace s Flask-Migrate](./04-Migrations/README.md).
-5.  Úvod do Flask-Smorest, Marshmallow schémata, Blueprints.
-6.  Implementace CRUD endpointů pro jednu entitu (např. Vydavatelé).
-7.  Implementace CRUD endpointů pro entity se vztahy (např. Knihy a Autoři).
-8.  Zpracování chyb a validace vstupů.
-9.  Autentizace uživatelů (Registrace, Přihlášení, JWT).
-10. Autorizace a zabezpečení endpointů.
+5.  [Úvod do Flask-Smorest, Marshmallow schémata, Blueprints](./05-FlaskSmorest/README.md).
+6.  [Zpracování chyb a validace vstupů](./06-ErrorHandling/README.md).
+7.  Autentizace uživatelů (Registrace, Přihlášení, JWT).
+8.  Autorizace a zabezpečení endpointů.
 
 
 ## 7. Předpoklady
 
 * Základní znalost **Pythonu**.
 * Znalost základů **SQL** a relačních databází (z předchozí sekce).
-* Znalost základů **Gitu** a **Dockeru** (viz sekce `00-predpoklady`).
+* Znalost základů **Gitu** a **Dockeru** (viz sekce [`00-predpoklady`](./00-predpoklady/README.md)).
 * Schopnost spustit a pracovat s poskytnutou šablonou projektu (včetně Dev Containers nebo manuálního spuštění).
