@@ -89,8 +89,8 @@ Backend bude typicky dostupný na `http://localhost:5000` a jeho API dokumentace
 4.  [Databázové migrace s Flask-Migrate](./04-Migrations/README.md).
 5.  [Úvod do Flask-Smorest, Marshmallow schémata, Blueprints](./05-FlaskSmorest/README.md).
 6.  [Zpracování chyb a validace vstupů](./06-ErrorHandling/README.md).
-7.  Autentizace uživatelů (Registrace, Přihlášení, JWT).
-8.  Autorizace a zabezpečení endpointů.
+7.  [Autentizace uživatelů (Registrace, Přihlášení, JWT)](./07-Authentication/README.md).
+8.  [Autorizace a zabezpečení endpointů](./08-Authorization/README.md).
 
 
 ## 7. Předpoklady
