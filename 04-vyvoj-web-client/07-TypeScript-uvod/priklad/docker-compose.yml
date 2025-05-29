@@ -1,0 +1,35 @@
+version: '3.8'
+
+services:
+  typescript_app:
+    # Název kontejneru pro snazší identifikaci
+    container_name: ts_docker_example_app
+    # Sestavení image z Dockerfile v aktuálním adresáři
+    build:
+      context: .
+      dockerfile: Dockerfile
+    # Restart policy - co dělat, když kontejner spadne
+    # 'no' - nerestartovat (vhodné pro jednorázové skripty)
+    # 'on-failure' - restartovat, pokud skončí s chybovým kódem
+    # 'always' - vždy restartovat
+    # 'unless-stopped' - vždy restartovat, pokud nebyl explicitně zastaven
+    restart: 'no'
+    # Mapování portů (není nutné pro tuto konzolovou aplikaci)
+    # Pokud by to byla webová aplikace běžící např. na portu 3000 v kontejneru:
+    # ports:
+    #   - "3000:3000" 
+
+    # Proměnné prostředí (příklad)
+    # environment:
+    #   - NODE_ENV=production
+    #   - API_KEY=secret_value
+
+    # Mapování volumes (pro vývoj, aby se změny v kódu projevily bez rebuild)
+    # Pro tento jednorázový build & run příklad to není nutné,
+    # ale pro vývoj byste odkomentovali a upravili:
+    # volumes:
+    #   - ./src:/usr/src/app/src 
+    #   - ./dist:/usr/src/app/dist # Pokud chcete vidět zkompilovaný výstup na hostiteli
+    # Pokud byste chtěli live-reload s nodemonem, upravili byste CMD v Dockerfile
+    # nebo 'command' zde v docker-compose.yml:
+    # command: npm run dev

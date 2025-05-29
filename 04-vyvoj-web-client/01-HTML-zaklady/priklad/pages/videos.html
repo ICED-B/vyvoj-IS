@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="Showcase of embeding videos into HTML">
+    <meta name="author" content="Tomáš Ráčil">
+    <meta name="keywords" content="HTML, Videos, ...">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Videos</title>
+</head>
+
+<body>
+    <header>
+        <h1>HTML5</h1>
+        <nav>
+            <a href="../index.html">Landing page</a>
+            <a href="formating.html">Formating</a>
+            <a href="links.html">Links</a>
+            <a href="images.html">Images</a>
+            <a href="videos.html">Videos</a>
+            <a href="lists.html">Lists</a>
+            <a href="tables.html">Tables</a>
+            <a href="containers.html">Containers</a>
+            <a href="inputs.html">Inputs</a>
+            <a href="iframe.html">IFrame</a>
+        </nav>
+        <hr />
+    </header>
+
+    <main>
+        <section>
+            <h5>Embeding standard mp4 video file</h5> 
+            With parameters we can set width, height autoplay on load and looping.
+            <br>
+            <video src="https://sample-videos.com/video123/mp4/720/big_buck_bunny_720p_1mb.mp4" autoplay loop
+                controls width="300"
+                poster="https://c8.alamy.com/comp/KMNCXM/astronaut-in-space-elements-of-this-iimage-furnished-by-nasa-KMNCXM.jpg"></video>
+        </section>
+        <section>
+            <h5>Embeding youtube video using iFrame</h5>
+            <br>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/EngW7tLk6R8" frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                allowfullscreen></iframe>
+        </section>
+    </main>
+    <footer>
+        <hr>
+        <p>Here goes footer of the page</p>
+        <p>author: <a href="https://github.com/TomasRacil" target="_blank">Tomáš Ráčil</a></p>
+    </footer>
+</body>
+
+</html>

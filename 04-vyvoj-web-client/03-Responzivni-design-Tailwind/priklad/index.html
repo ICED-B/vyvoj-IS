@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responzivní stránka s Tailwind CSS</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        /* Volitelné vlastní styly, pokud by byly potřeba nad rámec Tailwindu */
+        body {
+            font-family: 'Inter', sans-serif;
+            /* Příklad nastavení výchozího fontu */
+        }
+
+        .explanation-box {
+            background-color: #f0f8ff;
+            /* AliceBlue */
+            border-left: 4px solid #1e90ff;
+            /* DodgerBlue */
+            padding: 12px;
+            margin-top: 8px;
+            margin-bottom: 16px;
+            border-radius: 4px;
+            font-size: 0.875rem;
+            /* text-sm */
+            color: #333;
+        }
+
+        .explanation-box code {
+            background-color: #e0f0ff;
+            padding: 2px 4px;
+            border-radius: 3px;
+            font-family: monospace;
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="bg-gray-100 text-gray-800">
+
+    <header class="bg-blue-600 text-white p-4 shadow-md">
+        <div class="container mx-auto flex justify-between items-center">
+            <h1 class="text-2xl font-bold">Responzivní Ukázka</h1>
+            <nav>
+                <ul class="flex space-x-4">
+                    <li><a href="#" class="hover:text-blue-200">Domů</a></li>
+                    <li><a href="#" class="hover:text-blue-200">Služby</a></li>
+                    <li class="hidden sm:block"><a href="#" class="hover:text-blue-200">O nás</a></li>
+                    <li><a href="#" class="hover:text-blue-200">Kontakt</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+    <div class="explanation-box container mx-auto mt-2">
+        <p><strong>Hlavička (`&lt;header&gt;`):</strong></p>
+        <ul class="list-disc list-inside ml-4">
+            <li><code>bg-blue-600</code>: Nastavuje modré pozadí.</li>
+            <li><code>text-white</code>: Nastavuje bílou barvu textu.</li>
+            <li><code>p-4</code>: Přidává padding (vnitřní okraj) 1rem (16px) ze všech stran.</li>
+            <li><code>shadow-md</code>: Přidává střední stín.</li>
+            <li><code>container mx-auto</code>: Centruje obsah na stránce s maximální šířkou definovanou pro daný
+                breakpoint.</li>
+            <li><code>flex justify-between items-center</code>: Používá Flexbox pro zarovnání loga/názvu stránky a
+                navigace. <code>justify-between</code> rozmístí prvky na opačné konce, <code>items-center</code>
+                vertikálně centruje.</li>
+            <li>Navigace <code>&lt;ul class="flex space-x-4"&gt;</code>: Položky menu jsou vedle sebe s mezerou mezi
+                nimi.</li>
+            <li><code>hidden sm:block</code> u položky "O nás": Skryje položku na nejmenších obrazovkách
+                (<code>hidden</code>) a zobrazí ji jako blokový prvek od breakpointu <code>sm</code>
+                (<code>sm:block</code>) a výše.</li>
+        </ul>
+    </div>
+
+    <main class="container mx-auto p-4 mt-6">
+
+        <section class="mb-8 p-6 bg-white rounded-lg shadow">
+            <h2 class="text-xl sm:text-2xl font-semibold mb-3 text-blue-700">Příklad responzivní stránky</h2>
+            <p class="text-gray-600 leading-relaxed">
+                Tato stránka demonstruje základní principy responzivního designu s využitím Tailwind CSS.
+                Zkuste změnit velikost okna prohlížeče, abyste viděli, jak se layout přizpůsobuje.
+            </p>
+        </section>
+        <div class="explanation-box">
+            <p><strong>Úvodní sekce (`&lt;section&gt;`):</strong></p>
+            <ul class="list-disc list-inside ml-4">
+                <li><code>mb-8</code>: Přidává vnější okraj zespodu (margin-bottom) 2rem (32px).</li>
+                <li><code>p-6</code>: Padding 1.5rem (24px).</li>
+                <li><code>bg-white</code>: Bílé pozadí.</li>
+                <li><code>rounded-lg</code>: Větší zaoblené rohy.</li>
+                <li><code>shadow</code>: Jemný stín.</li>
+                <li>Nadpis <code>&lt;h2&gt;</code>: <code>text-xl</code> (velikost písma 1.25rem) na malých obrazovkách,
+                    <code>sm:text-2xl</code> (velikost písma 1.5rem) od breakpointu <code>sm</code>.
+                </li>
+                <li><code>leading-relaxed</code>: Nastavuje volnější výšku řádku pro lepší čitelnost odstavce.</li>
+            </ul>
+        </div>
+
+        <section>
+            <h3 class="text-lg sm:text-xl font-semibold mb-4 text-gray-700">Naše Služby (Responzivní Grid)</h3>
+            <div class="explanation-box">
+                <p><strong>Grid layout pro karty:</strong> Kontejner <code>&lt;div&gt;</code> používá Tailwind CSS grid
+                    systém.</p>
+                <ul class="list-disc list-inside ml-4">
+                    <li><code>grid</code>: Aktivuje CSS Grid.</li>
+                    <li><code>grid-cols-1</code>: Na nejmenších obrazovkách (výchozí) je jeden sloupec (karty jsou pod
+                        sebou).</li>
+                    <li><code>sm:grid-cols-2</code>: Od breakpointu <code>sm</code> (šířka 640px a více) se karty
+                        zobrazí ve dvou sloupcích.</li>
+                    <li><code>lg:grid-cols-3</code>: Od breakpointu <code>lg</code> (šířka 1024px a více) se karty
+                        zobrazí ve třech sloupcích.</li>
+                    <li><code>gap-6</code>: Definuje mezeru 1.5rem (24px) mezi buňkami gridu (mezi kartami).</li>
+                </ul>
+            </div>
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <img src="https://placehold.co/600x400/3498db/ffffff?text=Služba+1" alt="Ikona služby 1"
+                        class="w-full h-32 object-cover rounded-md mb-4">
+                    <h4 class="text-md font-bold text-blue-600 mb-2">Web Design</h4>
+                    <p class="text-sm text-gray-600">
+                        Moderní a responzivní webové stránky přizpůsobené vašim potřebám.
+                    </p>
+                </div>
+                <div class="explanation-box mt-0 mb-4">
+                    <p><strong>Styl jednotlivé karty:</strong></p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><code>bg-white p-6 rounded-lg shadow-lg</code>: Základní vzhled karty.</li>
+                        <li><code>hover:shadow-xl</code>: Při najetí myší se zvětší stín.</li>
+                        <li><code>transition-shadow duration-300</code>: Plynulý přechod stínu.</li>
+                        <li>Obrázek <code>&lt;img&gt;</code>: <code>w-full</code> (šířka 100%), <code>h-32</code> (pevná
+                            výška), <code>object-cover</code> (obrázek pokryje oblast, může být oříznut),
+                            <code>rounded-md mb-4</code> (zaoblení, spodní margin).
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <img src="https://placehold.co/600x400/2ecc71/ffffff?text=Služba+2" alt="Ikona služby 2"
+                        class="w-full h-32 object-cover rounded-md mb-4">
+                    <h4 class="text-md font-bold text-green-600 mb-2">Vývoj Aplikací</h4>
+                    <p class="text-sm text-gray-600">
+                        Mobilní a webové aplikace na míru pro podporu vašeho podnikání.
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <img src="https://placehold.co/600x400/e74c3c/ffffff?text=Služba+3" alt="Ikona služby 3"
+                        class="w-full h-32 object-cover rounded-md mb-4">
+                    <h4 class="text-md font-bold text-red-600 mb-2">Online Marketing</h4>
+                    <p class="text-sm text-gray-600">
+                        Zvyšte svou viditelnost online díky našim marketingovým strategiím.
+                    </p>
+                </div>
+
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <img src="https://placehold.co/600x400/f39c12/ffffff?text=Služba+4" alt="Ikona služby 4"
+                        class="w-full h-32 object-cover rounded-md mb-4">
+                    <h4 class="text-md font-bold text-yellow-600 mb-2">SEO Optimalizace</h4>
+                    <p class="text-sm text-gray-600">
+                        Dostaňte se na přední příčky ve vyhledávačích.
+                    </p>
+                </div>
+
+                <div
+                    class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 hidden md:block">
+                    <img src="https://placehold.co/600x400/9b59b6/ffffff?text=Služba+5" alt="Ikona služby 5"
+                        class="w-full h-32 object-cover rounded-md mb-4">
+                    <h4 class="text-md font-bold text-purple-600 mb-2">Grafický Design</h4>
+                    <p class="text-sm text-gray-600">
+                        Kreativní vizuální identita pro vaši značku.
+                    </p>
+                </div>
+                <div class="explanation-box mt-0 mb-4 md:col-span-1">
+                    <p><strong>Podmíněné zobrazení (Karta 5):</strong></p>
+                    <ul class="list-disc list-inside ml-4">
+                        <li><code>hidden</code>: Karta je standardně skrytá.</li>
+                        <li><code>md:block</code>: Od breakpointu <code>md</code> (768px) se karta zobrazí jako blokový
+                            prvek.</li>
+                    </ul>
+                </div>
+
+
+                <div class="bg-white p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300">
+                    <img src="https://placehold.co/600x400/1abc9c/ffffff?text=Služba+6" alt="Ikona služby 6"
+                        class="w-full h-32 object-cover rounded-md mb-4">
+                    <h4 class="text-md font-bold text-teal-600 mb-2">Podpora 24/7</h4>
+                    <p class="text-sm text-gray-600">
+                        Jsme tu pro vás kdykoliv budete potřebovat.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <section class="mt-10 p-6 bg-gray-200 rounded-lg shadow">
+            <h3 class="text-lg sm:text-xl font-semibold mb-4 text-gray-700">Flexibilní Layout</h3>
+            <div class="explanation-box">
+                <p><strong>Flexbox layout pro text a obrázek:</strong></p>
+                <ul class="list-disc list-inside ml-4">
+                    <li>Kontejner <code>&lt;div class="md:flex md:items-center"&gt;</code>:</li>
+                    <li>Standardně (na malých obrazovkách) se vnitřní <code>&lt;div&gt;</code> elementy zobrazí pod
+                        sebou (blokové chování).</li>
+                    <li><code>md:flex</code>: Od breakpointu <code>md</code> (768px) se aktivuje Flexbox, takže se
+                        vnitřní <code>&lt;div&gt;</code> elementy zobrazí vedle sebe.</li>
+                    <li><code>md:items-center</code>: Vertikálně centruje obsah v rámci flex kontejneru na
+                        <code>md</code> a větších obrazovkách.
+                    </li>
+                    <li>První vnitřní <code>&lt;div&gt;</code> (text): <code>md:w-1/2</code> (na <code>md</code> a
+                        větších zabere polovinu šířky), <code>md:pr-8</code> (padding vpravo na <code>md</code> a
+                        větších). <code>mb-4 md:mb-0</code> (spodní margin na malých, nulový na <code>md</code> a
+                        větších).</li>
+                    <li>Druhý vnitřní <code>&lt;div&gt;</code> (obrázek): <code>md:w-1/2</code> (na <code>md</code> a
+                        větších zabere druhou polovinu šířky).</li>
+                    <li>Obrázek <code>&lt;img&gt;</code>: <code>w-full h-auto</code> zajišťuje, že obrázek bude
+                        responzivní a zachová si poměr stran.</li>
+                </ul>
+            </div>
+            <div class="md:flex md:items-center">
+                <div class="md:w-1/2 md:pr-8 mb-4 md:mb-0">
+                    <h4 class="text-md font-bold text-gray-800 mb-2">Proč responzivita?</h4>
+                    <p class="text-sm text-gray-600 leading-relaxed">
+                        Responzivní design zajišťuje, že vaše stránky vypadají skvěle a jsou snadno použitelné na
+                        jakémkoli zařízení.
+                        To zlepšuje uživatelský zážitek a může pozitivně ovlivnit vaše pozice ve vyhledávačích.
+                        Tailwind CSS poskytuje vynikající nástroje pro rychlou implementaci responzivních prvků.
+                    </p>
+                    <button
+                        class="mt-4 bg-green-500 hover:bg-green-600 text-white font-semibold py-2 px-4 rounded shadow transition-colors duration-300">
+                        Zjistit více
+                    </button>
+                </div>
+                <div class="md:w-1/2">
+                    <img src="https://placehold.co/800x600/7f8c8d/ffffff?text=Responzivní+Obrázek"
+                        alt="Responzivní obrázek" class="rounded-lg shadow-md w-full h-auto">
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="bg-gray-800 text-gray-300 text-center p-6 mt-10">
+        <p>&copy; <span id="currentYear"></span> Vaše Jméno/Firma. Všechna práva vyhrazena.</p>
+        <p class="text-sm text-gray-500">Ukázka pro výuku responzivního designu.</p>
+    </footer>
+    <div class="explanation-box container mx-auto mt-2 mb-6">
+        <p><strong>Patička (`&lt;footer&gt;`):</strong></p>
+        <ul class="list-disc list-inside ml-4">
+            <li><code>bg-gray-800 text-gray-300</code>: Tmavé pozadí se světlým textem.</li>
+            <li><code>text-center</code>: Centruje text.</li>
+            <li><code>p-6 mt-10</code>: Padding a horní margin.</li>
+            <li>JavaScriptový kód na konci souboru dynamicky vkládá aktuální rok.</li>
+        </ul>
+        <p class="mt-4"><strong>Obecné poznámky k Tailwind CSS:</strong></p>
+        <ul class="list-disc list-inside ml-4">
+            <li>Třídy jako <code>p-4</code>, <code>m-6</code>, <code>gap-6</code> používají škálu mezer definovanou v
+                Tailwindu (např. <code>4</code> obvykle znamená <code>1rem</code> nebo <code>16px</code>, <code>6</code>
+                znamená <code>1.5rem</code> nebo <code>24px</code>).</li>
+            <li>Responzivní prefixy (<code>sm:</code>, <code>md:</code>, <code>lg:</code>, <code>xl:</code>,
+                <code>2xl:</code>) aplikují danou utilitu pouze od specifikovaného breakpointu (šířky obrazovky) a výše.
+                Např. <code>sm:text-left</code> znamená "zarovnej text doleva na obrazovkách širších než 640px".
+            </li>
+            <li>Prozkoumejte <a href="https://tailwindcss.com/docs" target="_blank"
+                    class="text-blue-500 hover:underline">oficiální dokumentaci Tailwind CSS</a> pro kompletní přehled
+                všech dostupných utility tříd.</li>
+        </ul>
+    </div>
+
+    <script>
+        // Jednoduchý skript pro aktuální rok v patičce
+        document.getElementById('currentYear').textContent = new Date().getFullYear();
+    </script>
+
+</body>
+
+</html>

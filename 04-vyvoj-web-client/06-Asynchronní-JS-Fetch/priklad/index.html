@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Asynchronní JS a Fetch API - Ukázka</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.7;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 25px;
+        }
+
+        h1,
+        h2 {
+            color: #2c3e50;
+            /* Tmavě modrošedá */
+        }
+
+        button {
+            background-color: #3498db;
+            /* Světle modrá */
+            color: white;
+            border: none;
+            padding: 12px 20px;
+            margin: 8px 5px 8px 0;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 0.95em;
+            transition: background-color 0.25s ease;
+        }
+
+        button:hover {
+            background-color: #2980b9;
+            /* Tmavší modrá */
+        }
+
+        button:disabled {
+            background-color: #bdc3c7;
+            /* Šedá pro neaktivní */
+            cursor: not-allowed;
+        }
+
+        .status-message {
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 4px;
+            font-weight: bold;
+        }
+
+        .status-message.success {
+            background-color: #d4edda;
+            /* Světle zelená */
+            color: #155724;
+            /* Tmavě zelená */
+            border: 1px solid #c3e6cb;
+        }
+
+        .status-message.error {
+            background-color: #f8d7da;
+            /* Světle červená */
+            color: #721c24;
+            /* Tmavě červená */
+            border: 1px solid #f5c6cb;
+        }
+
+        .user-card,
+        .post-card {
+            background-color: #ecf0f1;
+            /* Velmi světle šedá */
+            border: 1px solid #dee2e6;
+            padding: 15px;
+            margin-top: 10px;
+            border-radius: 6px;
+        }
+
+        .user-card h3,
+        .post-card h3 {
+            margin-top: 0;
+            color: #34495e;
+            /* Tmavší šedá */
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        textarea {
+            width: calc(100% - 22px);
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        textarea {
+            resize: vertical;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1>Asynchronní JavaScript a Fetch API</h1>
+        <p>Tato stránka demonstruje načítání dat z veřejného API a odesílání dat pomocí <code>fetch</code>.</p>
+        <p>Otevřete konzoli prohlížeče (F12) pro sledování logů.</p>
+    </div>
+
+    <div class="container">
+        <h2>Načítání dat (GET)</h2>
+        <button id="nacistUzivateleBtn">Načíst seznam uživatelů</button>
+        <button id="nacistJedenTodoBtn">Načíst TODO položku (ID 5)</button>
+        <button id="nacistNeexistujiciTodoBtn">Načíst neexistující TODO (ID 9999)</button>
+        <div id="dataKontejner" class="output-area">
+            <p>Sem se vypíší načtená data...</p>
+        </div>
+        <div id="statusGet" class="status-message" style="display:none;"></div>
+    </div>
+
+    <div class="container">
+        <h2>Odesílání dat (POST)</h2>
+        <form id="novyPrispevekForm">
+            <div>
+                <label for="titulekInput">Titulek:</label>
+                <input type="text" id="titulekInput" name="title" value="Můj testovací příspěvek" required>
+            </div>
+            <div>
+                <label for="obsahInput">Obsah:</label>
+                <textarea id="obsahInput" name="body" rows="4" required>Toto je obsah mého skvělého testovacího příspěvku.</textarea>
+            </div>
+            <div>
+                <label for="userIdInput">User ID:</label>
+                <input type="text" id="userIdInput" name="userId" value="1" required>
+            </div>
+            <button type="submit" id="odeslatPrispevekBtn">Odeslat nový příspěvek</button>
+        </form>
+        <div id="postKontejner" class="output-area">
+            <p>Zde se zobrazí výsledek POST požadavku...</p>
+        </div>
+        <div id="statusPost" class="status-message" style="display:none;"></div>
+    </div>
+
+    <script src="fetch_script.js"></script>
+</body>
+
+</html>

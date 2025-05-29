@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript DOM a Eventy - Ukázka</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 20px;
+            background-color: #f0f2f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            background-color: #fff;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        h1,
+        h2 {
+            color: #0056b3;
+            /* Tmavě modrá */
+        }
+
+        button {
+            background-color: #007bff;
+            /* Modrá */
+            color: white;
+            border: none;
+            padding: 10px 18px;
+            margin: 5px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1em;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+            /* Tmavší modrá */
+        }
+
+        input[type="text"],
+        textarea {
+            padding: 8px;
+            margin: 5px 0 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            width: calc(100% - 18px);
+            /* Pro padding */
+        }
+
+        .highlight {
+            background-color: #fff3cd;
+            /* Světle žlutá */
+            border-left: 5px solid #ffeeba;
+            /* Tmavší žlutá */
+            padding: 10px;
+        }
+
+        .error-message {
+            color: #d9534f;
+            /* Červená */
+            font-weight: bold;
+        }
+
+        #dynamickyObsah div {
+            border: 1px dashed #aaa;
+            padding: 10px;
+            margin-top: 10px;
+            background-color: #e9ecef;
+        }
+
+        #obrazekUkazka {
+            max-width: 200px;
+            height: auto;
+            border: 2px solid #ddd;
+            border-radius: 4px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="container">
+        <h1 id="hlavniNadpis">Manipulace s DOM a Události</h1>
+        <p>Toto je ukázková stránka pro demonstraci JavaScriptu, DOM a událostí.</p>
+    </div>
+
+    <div class="container">
+        <h2>Výběr a změna elementů</h2>
+        <p id="textProZmenu">Tento text bude brzy změněn JavaScriptem.</p>
+        <button id="zmenTextBtn">Změň text odstavce</button>
+        <button id="zmenStylBtn">Změň styl odstavce</button>
+        <button id="pridejTriduBtn">Přidej třídu "highlight"</button>
+        <button id="odeberTriduBtn">Odeber třídu "highlight"</button>
+        <button id="toggleTriduBtn">Přepni třídu "highlight"</button>
+    </div>
+
+    <div class="container">
+        <h2>Atributy</h2>
+        <a id="mujOdkaz" href="https://www.example.com" target="_self">Původní odkaz (example.com)</a>
+        <br>
+        <img id="obrazekUkazka" src="https://placehold.co/200x150/007bff/ffffff?text=Obrázek+1" alt="Ukázkový obrázek">
+        <br>
+        <button id="zmenOdkazBtn">Změň odkaz a obrázek</button>
+    </div>
+
+    <div class="container">
+        <h2>Vytváření a vkládání elementů</h2>
+        <button id="pridejElementBtn">Přidej nový prvek</button>
+        <button id="odeberPosledniBtn">Odeber poslední prvek</button>
+        <div id="dynamickyObsah">
+            <p>Sem se budou přidávat nové prvky.</p>
+        </div>
+    </div>
+
+    <div class="container">
+        <h2>Události</h2>
+        <button id="klikaciTlacitko">Klikni na mě!</button>
+        <div id="oblastMysi"
+            style="width: 200px; height: 100px; background-color: lightcoral; margin-top:10px; text-align: center; padding-top: 40px;">
+            Najedu myší sem</div>
+        <p>Pozice myši: X=<span id="poziceX">0</span>, Y=<span id="poziceY">0</span></p>
+
+        <h3>Formulářové události</h3>
+        <form id="mujFormular">
+            <label for="jmenoInput">Jméno:</label>
+            <input type="text" id="jmenoInput" name="jmeno" placeholder="Napište své jméno">
+            <p>Psaný text: <span id="vystupJmeno"></span></p>
+
+            <label for="poznamkyInput">Poznámky:</label>
+            <textarea id="poznamkyInput" name="poznamky" rows="3" placeholder="Napište poznámku"></textarea>
+            <p id="validacePoznamky" class="error-message"></p>
+
+            <button type="submit">Odeslat formulář</button>
+        </form>
+    </div>
+
+    <div class="container">
+        <h2>Event Bubbling a Capturing (Ukázka v konzoli)</h2>
+        <div id="rodicDiv" style="background-color: lightblue; padding: 20px;">
+            Rodičovský DIV
+            <div id="diteDiv" style="background-color: lightgreen; padding: 15px; margin-top:10px;">
+                Dceřiný DIV
+                <button id="vnitrniTlacitko" style="background-color: orange;">Vnitřní tlačítko</button>
+            </div>
+        </div>
+    </div>
+
+
+    <script src="dom_script.js"></script>
+</body>
+
+</html>
