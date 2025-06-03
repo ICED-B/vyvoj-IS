@@ -174,7 +174,9 @@ mojeAsynchronniFunkce()
     });
 
 console.log("Kód po volání asynchronní funkce pokračuje...");
-```async/await` výrazně zjednodušuje práci s více navazujícími asynchronními operacemi.
+```
+
+`async/await` výrazně zjednodušuje práci s více navazujícími asynchronními operacemi.
 
 ## `fetch` API
 

@@ -1,4 +1,4 @@
-# 8. Úvod do Reactu (s TypeScriptem): JSX, komponenty, props, state (useState)
+# 8. Úvod do Reactu: JSX, komponenty, props, state (useState)
 
 Po seznámení se základy HTML, CSS, JavaScriptu a TypeScriptu se nyní ponoříme do **Reactu**. React je populární JavaScriptová (a TypeScriptová) knihovna pro vytváření uživatelských rozhraní (UI), zejména pro jednostránkové aplikace (Single Page Applications - SPAs).
 
