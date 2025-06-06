@@ -170,8 +170,8 @@ Materiály budou rozděleny do následujících podsekcí:
 7.  [Úvod do TypeScriptu: Typový systém, rozdíly oproti JavaScriptu, konfigurace](./07-TypeScript-zaklady/README.md)
 8.  [Úvod do Reactu: JSX, komponenty, props, state (useState)](./08-React-uvod/README.md)
 9.  [React Hooks a správa stavu: useEffect, (volitelně useContext, useReducer)](./09-React-Hooks-State/README.md)
-10. [Routování v React aplikacích (s Next.js)](./10-React-NextJS-Routing/README.md)
-11. [Vytváření formulářů a komunikace s API v Reactu/Next.js](./11-React-NextJS-Forms-API/README.md)
+10. [Routování v React aplikacích](./10-React-Routing/README.md)
+11. [Vytváření formulářů a komunikace s API](./11-ReactForms-API/README.md)
 12. [(Volitelně) Pokročilejší témata: Globální správa stavu (Redux, Zustand - zmínka), testování](./12-React-Pokrocilejsi-temata/README.md)
 
 ## 7. Předpoklady
