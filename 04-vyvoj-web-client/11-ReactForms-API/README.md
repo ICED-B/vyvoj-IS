@@ -18,7 +18,6 @@ Tímto způsobem React "kontroluje" hodnotu pole a jakákoli změna se okamžit�
 
 ```tsx
 // src/components/JednoduchyFormular.tsx
-"use client"; // Pokud používáme v Next.js App Routeru
 
 import React, { useState } from 'react';
 
