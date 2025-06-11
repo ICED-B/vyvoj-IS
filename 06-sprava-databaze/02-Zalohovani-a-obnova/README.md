@@ -52,16 +52,16 @@ Toto je výchozí formát. Vytvoří jeden velký `.sql` soubor.
 
 ```bash
 # pg_dump -U <uživatel> -h <host> <název_db> > <název_souboru>.sql
-pg_dump -U postgres -h localhost knihovna > knihovna_backup.sql
+pg_dump -U sql_user -h localhost sql_knihovna_db > sql_knihovna_db_backup.sql
 ```
-* Tento příkaz vytvoří soubor `knihovna_backup.sql`, který obsahuje všechny SQL příkazy pro obnovu databáze `knihovna`.
+* Tento příkaz vytvoří soubor `sql_knihovna_db_backup.sql`, který obsahuje všechny SQL příkazy pro obnovu databáze `sql_knihovna_db`.
 
 **2. Custom formát (.dump)**
 Tento formát je komprimovaný a je doporučený pro větší databáze. Umožňuje flexibilnější obnovu.
 
 ```bash
 # pg_dump -U <uživatel> -h <host> -F c -f <název_souboru>.dump <název_db>
-pg_dump -U postgres -h localhost -F c -f knihovna_backup.dump knihovna
+pg_dump -U sql_user -h localhost -F c -f sql_knihovna_db_backup.dump sql_knihovna_db
 ```
 * `-F c` specifikuje "custom" formát.
 * `-f` určuje výstupní soubor (místo přesměrování `>`).
@@ -73,10 +73,10 @@ Obnova se provádí pomocí nástroje `psql`. Nejprve je potřeba vytvořit novo
 
 ```bash
 # Vytvoření nové databáze
-createdb -U postgres -h localhost knihovna_nova
+createdb -U sql_user -h localhost sql_knihovna_db_nova
 
 # Nahrání zálohy do nové databáze
-psql -U postgres -h localhost -d knihovna_nova < knihovna_backup.sql
+psql -U sql_user -h localhost -d sql_knihovna_db_nova < sql_knihovna_db_backup.sql
 ```
 
 **2. Obnova z custom formátu (.dump) pomocí `pg_restore`**
@@ -84,10 +84,10 @@ Pro tento formát se používá nástroj `pg_restore`, který nabízí více mo�
 
 ```bash
 # Vytvoření nové databáze
-createdb -U postgres -h localhost knihovna_nova_z_dumpu
+createdb -U sql_user -h localhost sql_knihovna_db_nova_z_dumpu
 
 # Obnova pomocí pg_restore
-pg_restore -U postgres -h localhost -d knihovna_nova_z_dumpu knihovna_backup.dump
+pg_restore -U sql_user -h localhost -d sql_knihovna_db_nova_z_dumpu sql_knihovna_db_backup.dump
 ```
 * `-d` specifikuje cílovou databázi.
 
@@ -96,7 +96,7 @@ pg_restore -U postgres -h localhost -d knihovna_nova_z_dumpu knihovna_backup.dum
 Nástroj `pg_dump` vytváří vždy plnou zálohu. U velmi velkých databází by to bylo neefektivní. Pro tyto případy nabízí PostgreSQL pokročilou techniku **Point-in-Time Recovery (PITR)**, která umožňuje zálohovat pouze změny.
 
 Princip je založen na **archivaci transakčních logů (Write-Ahead Logs - WAL)**:
-1.  Jednou za čas (např. jednou týdně) se vytvoří plná **fyzická záloha** (tzv. base backup).
+1.  Jednou za čas (např. jednou týdně) se vytvoří **plná záloha** (tzv. base backup).
 2.  Průběžně se **archivují WAL soubory**, což jsou malé soubory popisující každou změnu v databázi. Toto je v podstatě **zálohování změn (inkrementální záloha)**.
 3.  Při obnově se nejprve nahraje poslední plná záloha a poté se na ni aplikují všechny archivované WAL soubory.
 
@@ -109,16 +109,16 @@ Ruční zálohování je nespolehlivé. V reálném provozu se zálohy automatiz
 
 Příklad `cron` úlohy, která provede zálohu každý den ve 2:00 ráno:
 ```cron
-0 2 * * * pg_dump -U postgres knihovna > /var/backups/knihovna_$(date +\%Y-\%m-\%d).sql
+0 2 * * * pg_dump -U sql_user sql_knihovna_db > /var/backups/sql_knihovna_db_$(date +\%Y-\%m-\%d).sql
 ```
 
 ---
 
 ## Praktické úkoly
 
-1.  **Vytvořte zálohu:** Pomocí `pg_dump` vytvořte zálohu vaší databáze `knihovna` ve formátu plain-text (`.sql`).
+1.  **Vytvořte zálohu:** Pomocí `pg_dump` vytvořte zálohu vaší databáze `sql_knihovna_db` ve formátu plain-text (`.sql`).
 2.  **Vytvořte druhou zálohu:** Vytvořte druhou zálohu stejné databáze, ale tentokrát v custom formátu (`.dump`).
-3.  **Simulujte katastrofu:** Připojte se k databázi `knihovna` a schválně smažte nějakou tabulku, např. `DROP TABLE authors;`. Ověřte, že data jsou pryč.
-4.  **Vytvořte novou databázi:** Pomocí `createdb` vytvořte novou prázdnou databázi s názvem `knihovna_obnova`.
-5.  **Obnovte data:** Pomocí `psql` a vaší `.sql` zálohy obnovte data do databáze `knihovna_obnova`. Připojte se a ověřte, že tabulka `authors` a její data jsou zpět.
+3.  **Simulujte katastrofu:** Připojte se k databázi `sql_knihovna_db` a schválně smažte nějakou tabulku, např. `DROP TABLE authors;`. Ověřte, že data jsou pryč.
+4.  **Vytvořte novou databázi:** Pomocí `createdb` vytvořte novou prázdnou databázi s názvem `sql_knihovna_db_obnova`.
+5.  **Obnovte data:** Pomocí `psql` a vaší `.sql` zálohy obnovte data do databáze `sql_knihovna_db_obnova`. Připojte se a ověřte, že tabulka `authors` a její data jsou zpět.
 6.  **Obnovte data 2. způsob:** Zkuste obnovit databázi i z vaší druhé, `.dump` zálohy pomocí `pg_restore`.
