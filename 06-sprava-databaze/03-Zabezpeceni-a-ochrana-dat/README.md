@@ -94,8 +94,8 @@ Tímto krokem všichni uživatelé v roli `ctenari` (včetně našeho `analytik`
     * `data_entry_user`: Role pro uživatele, kteří vkládají data. Budou potřebovat vkládat a upravovat data, ale ne mazat.
 2.  **Vytvořte uživatele:** Vytvořte nového uživatele `brigadnik` s heslem a přiřaďte mu roli `data_entry_user`.
 3.  **Nastavte oprávnění pro `report_user`:**
-    * Přidělte roli `report_user` právo `SELECT` na tabulky `books`, `authors`.
+    * Přidělte roli `report_user` právo `SELECT` na tabulky `books` a `authors`.
 4.  **Nastavte oprávnění pro `data_entry_user`:**
-    * Přidělte roli `data_entry_user` práva `INSERT` a `UPDATE` na tabulku `customers`.
+    * Přidělte roli `data_entry_user` práva `INSERT` a `UPDATE` na tabulku `book` a `authors`.
     * Dále jí přidělte právo `SELECT` na tabulku `customers`, aby uživatel viděl, co vkládá/upravuje.
 5.  **(Bonus):** Zkuste se připojit k databázi jako uživatel `brigadnik` a ověřte, že můžete vložit nového zákazníka do tabulky `customers`, ale nemůžete například smazat záznam nebo číst z tabulky `books`.
