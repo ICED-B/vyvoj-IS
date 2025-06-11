@@ -138,7 +138,7 @@ $$ LANGUAGE plpgsql;
 CALL zapis_log('Testovací zpráva z procedury.');
 
 -- Kontrola obsahu tabulky
-SELECT * FROM log;
+x;  
 ```
 
 ---
@@ -156,16 +156,7 @@ Vytvořte funkci `cele_jmeno_autora`, která přijme ID autora jako vstupní par
 * **Výstup:** `TEXT` (např. "Karel Čapek").
 * **Nápověda:** Budete muset dotázat tabulku `authors` a spojit sloupce `first_name` a `last_name` (nezapomeňte na mezeru mezi nimi).
 
-### Úkol 2: Funkce pro výpočet celkové ceny objednávky
-
-Vytvořte funkci `celkova_cena_objednavky`, která na základě ID objednávky (`order_id`) vypočítá její celkovou cenu. Celková cena je součtem cen všech položek v objednávce (počet kusů * cena za kus).
-
-* **Název funkce:** `celkova_cena_objednavky(INTEGER)`
-* **Vstup:** ID objednávky.
-* **Výstup:** `NUMERIC`
-* **Nápověda:** Budete muset propojit tabulky `order_items` (pro počet kusů) a `books` (pro cenu knihy) a sečíst výsledné částky pro danou objednávku. Využijte agregační funkci `SUM()`.
-
-### Úkol 3: Procedura pro vložení nové knihy
+### Úkol 2: Procedura pro vložení nové knihy
 
 Vytvořte proceduru `pridej_knihu`, která zjednoduší vkládání nové knihy a jejího autora. Procedura přijme jméno a příjmení autora a název knihy. Logika by měla být následující:
 1.  Zjistit, zda autor s daným jménem a příjmením již existuje v tabulce `authors`.
