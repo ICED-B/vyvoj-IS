@@ -97,5 +97,5 @@ Tímto krokem všichni uživatelé v roli `ctenari` (včetně našeho `analytik`
     * Přidělte roli `report_user` právo `SELECT` na tabulky `books` a `authors`.
 4.  **Nastavte oprávnění pro `data_entry_user`:**
     * Přidělte roli `data_entry_user` práva `INSERT` a `UPDATE` na tabulku `book` a `authors`.
-    * Dále jí přidělte právo `SELECT` na tabulku `customers`, aby uživatel viděl, co vkládá/upravuje.
-5.  **(Bonus):** Zkuste se připojit k databázi jako uživatel `brigadnik` a ověřte, že můžete vložit nového zákazníka do tabulky `customers`, ale nemůžete například smazat záznam nebo číst z tabulky `books`.
+    * Dále jí přidělte právo `SELECT` na tabulku `books` a `authors`, aby uživatel viděl, co vkládá/upravuje.
+5.  **(Bonus):** Zkuste se připojit k databázi jako uživatel `brigadnik` a ověřte, že můžete vložit nový záznam do tabulky `authors` a upravit existující záznam v tabulce `books`, ale nemůžete například smazat záznam nebo číst z tabulky `publishers`.
